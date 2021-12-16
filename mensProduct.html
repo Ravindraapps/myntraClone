@@ -402,6 +402,7 @@
   document.getElementById("ddownP").addEventListener("mouseleave", removeProf);
 
   let products = document.getElementById("products");
+  let wishlist_data = JSON.parse(localStorage.getItem("wishlist_data")) ||[];
   let displayProduct = (data) => {
     products.innerHTML = "";
     let i = 0;
@@ -467,6 +468,8 @@
         icon.style.color = "#ff425c";
         wish_btn.style.backgroundColor = "#32323a";
         wish_btn.style.color = "white";
+        wishlist_data.push(product);
+        localStorage.setItem("men_wislist_data",JSON.stringify(wishlist_data));
       });
 
       let image = document.createElement("img");
