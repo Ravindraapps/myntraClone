@@ -411,6 +411,13 @@
       let imgDiv = document.createElement("div");
       imgDiv.setAttribute("id", "imgDiv");
       let div = document.createElement("div");
+
+      // localStorage for preview page---------------->
+
+      div.addEventListener("click", function () {
+        localStorage.setItem("preview_Data",JSON.stringify(product));
+        window.location.href = "previewPage.html";
+      });
       div.addEventListener("mouseover", function () {
         div.style.padding = "10px";
         wishlist_div.style.visibility = "visible";
