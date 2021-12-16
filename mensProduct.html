@@ -12,6 +12,7 @@
   </head>
   <link rel="stylesheet" href="./style/nav.css">
   <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/256cec0589.js" crossorigin="anonymous"></script>
   
   <style>
     *{
@@ -69,18 +70,20 @@
 
     }
     #products>div{
-        padding: 20px;
+        padding: 30px;
         margin-top: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: -moz-pre-wrap;
         white-space:nowrap;
 
+
     }
     #products>div>div>img{
         width: 100%;
         
     }
+    
     #priceDiv{
         display: flex;
         gap:5%;
@@ -145,6 +148,36 @@
     }
     #sortId{
       border: 1px solid gray;
+    }
+    #wish_btn{
+      display: flex;
+      gap:10px;
+      justify-content:center;
+      border: 1px solid gray;
+      overflow: hidden;
+      font-weight: bold;
+      align-items: center;
+      width:100%;
+     
+    }
+    #wishlist_div{
+      position: relative;
+      left: 0;
+      bottom:70px;
+      visibility:hidden;
+      /* display:none; */
+      /* bottom: 20px;
+      left: 20px; */
+      background-color: white;
+      /* height: 20px; */
+      /* font-size: 13px; */
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      opacity: 100%;
+      width: 94%;
+      margin-bottom: -90px;
+      /* z-index: 10px */
     }
   </style>
   <body>
@@ -378,15 +411,61 @@
   let products = document.getElementById("products"); 
   let displayProduct = (data) => {
       products.innerHTML = "";
+      let i=0;
+      let id;
       data.forEach((product)=>{
           // console.log(product.rating)
+          let imgDiv = document.createElement("div");
+          imgDiv.setAttribute("id","imgDiv")
           let div = document.createElement("div");
           div.addEventListener("mouseover",function() {
             div.style.padding = "10px";
+            wishlist_div.style.visibility = "visible";
+            wishlist_div.style.overflow = "visible";
+            id= setInterval(function(){
+                  if(i===imgArr.length){
+                      i=0;
+                  }
+                  Object.keys(product.images).forEach(function(key){
+                    imgArr.push(product.images[key])
+                  })
+                  console.log(imgArr)
+                  image.src=imgArr[i];
+                  imgDiv.append(image,ratingDiv)
+                  i++;
+              },3000);
+            // startSS();
+
           })
           div.addEventListener("mouseleave",function() {
             div.style.padding = "20px";
+            wishlist_div.style.visibility = "hidden";
+            wishlist_div.style.overflow = "hidden";
+            clearInterval(id)
+            // stopSS();
           })
+          let wish_btn = document.createElement("div");
+          wish_btn.setAttribute("id","wish_btn")
+
+          let sizes = document.createElement("p");
+          sizes.innerText="Sizes : S,M,L,XL,XXL" 
+          
+          let wishlist_div = document.createElement("div");
+          wishlist_div.setAttribute("id","wishlist_div")
+            let wish_name = document.createElement("p");
+            wish_name.innerText = "Wishlist";
+
+            let icon = document.createElement("i");
+            icon.innerHTML =`<i class="far fa-heart"></i>`;
+
+            wish_btn.append(icon,wish_name);
+            wishlist_div.append(wish_btn,sizes);
+            wish_btn.addEventListener("click",function(e) {
+              icon.innerHTML =`<i class="fas fa-heart"></i>`
+              icon.style.color = "#ff425c";
+              wish_btn.style.backgroundColor = "#32323a";
+              wish_btn.style.color = "white";
+            })
   
           let image = document.createElement("img");
           image.src = product.images.image1;
@@ -397,10 +476,9 @@
           let ratingDiv = document.createElement("div");
           ratingDiv.append(rating);
           ratingDiv.setAttribute("id","ratingDiv")
-  
-          let imgDiv = document.createElement("div");
-          imgDiv.setAttribute("id","imgDiv")
-  
+          let imgArr=[]
+
+          
   
           imgDiv.append(image,ratingDiv)
   
@@ -425,7 +503,7 @@
   
           div1.append(price,off_price,discount);
   
-          div.append(imgDiv,brand,title,div1);
+          div.append(imgDiv,brand,title,wishlist_div,div1);
         
   
           products.append(div);
@@ -615,6 +693,9 @@ let roadster = document.getElementById("roadster");
  })
 
   displayProduct(data);
+
+
+
 
   </script>
   
