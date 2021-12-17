@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  </head>
+  <style>
+    #container {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+    }
+    #filter_sidebar {
+      border: 1px solid black;
+      padding: 20px;
+      line-height: 30px;
+      font-size: 18px;
+    }
+    #products {
+      border: 1px solid black;
+      padding: 20px;
+    }
+    #filter_sidebar > div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      line-height: px;
+    }
+  </style>
+  <body>
+   
+    <div id="container">
+      <div id="filter_sidebar">
+        <label for=""><h4>BRAND</h4></label>
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="roadster"
+          type="checkbox"
+        />Roadster <span>(2743)</span><br />
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="mast"
+          type="checkbox"
+        />Mast & Harbour <span>(1256)</span> <br />
+        <input class="checkk" onclick="onData();" id="hm" type="checkbox" />Here
+        & Now <span>(2318)</span> <br />
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="clovia"
+          type="checkbox"
+        />Clovia <span>(1408)</span> <br />
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="kalini"
+          type="checkbox"
+        />Kalini <span>(1234)</span> <br />
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="dressberry"
+          type="checkbox"
+        />Dressberry <span>(125)</span> <br />
+        <input
+          class="checkk"
+          onclick="onData();"
+          id="celfie"
+          type="checkbox"
+        />Celfie Design <span>(630)</span>
+
+        <hr />
+        <label for=""><h4>COLOR</h4></label>
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: black;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Black
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: white;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          White
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: green;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Green
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: navy;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          NavyBlue
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: red;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Red
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: yellow;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Yellow
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: pink;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Pink
+        </div>
+        <br />
+        <div>
+          <input type="checkbox" />
+          <div
+            style="
+              background-color: blue;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Blue
+        </div>
+        <br />
+      </div>
+      <div id="products"></div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import { allData } from "./data.js";
+  let data = allData();
+  console.log(data);
+
+  let local_data = JSON.parse(localStorage.getItem("datas")) || [];
+
+  let filter = (data) => {
+    data.forEach(function (Data) {
+      if (data.id !== local_data.id || local_data === null) {
+        if (Data.color === "black") {
+          // console.log(Data)
+          local_data.push(Data);
+          // localStorage.setItem("datas",JSON.stringify(local_data));
+        }
+
+        let colorData = {
+          black: local_data,
+        };
+        localStorage.setItem("datas", JSON.stringify(colorData));
+      }
+    });
+  };
+  // console.log(result);
+  filter(data);
+
+  let roadster = document.getElementById("roadster");
+  let mast = document.getElementById("mast");
+  let hm = document.getElementById("hm");
+  let clovia = document.getElementById("clovia");
+  let kalini = document.getElementById("kalini");
+  let dressberry = document.getElementById("dressberry");
+  let celfie = document.getElementById("celfie");
+
+  $(".checkk").click(function () {
+    $(this).siblings("input:checkbox").prop("checked", false);
+  });
+
+  let onData = () => {
+    if (roadster.checked == true) {
+      console.log("roadster");
+    }
+    if (mast.checked == true) {
+      console.log("mast");
+    }
+    if (hm.checked == true) {
+      console.log("hm");
+    }
+    if (clovia.checked == true) {
+      console.log("clovia");
+    }
+    if (kalini.checked == true) {
+      console.log("kalini");
+    }
+    if (dressberry.checked == true) {
+      console.log("dress");
+    }
+    if (celfie.checked == true) {
+      console.log("celfie");
+    }
+  };
+
+  // if(roadster.checked)
+</script>
