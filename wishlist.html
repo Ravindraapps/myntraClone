@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/nav.css" />
+    <script
+      src="https://kit.fontawesome.com/cd2d18a745.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      body {
+        font-family: Whitney, Helvetica, Arial, sans-serif;
+      }
+      #container {
+        margin-left: 5%;
+      }
+      #box2 {
+        display: grid;
+        grid-template-columns: repeat(5, 17%);
+        gap: 4%;
+        text-align: center;
+      }
+      img {
+        width: 100%;
+      }
+      .div1 {
+        border: 1px solid rgb(197, 193, 193);
+        margin-top: 20px;
+      }
+      h3 {
+        /* font-size: 18px; */
+        font-weight: 200;
+      }
+      /* p {
+        font-weight: bold;
+      } */
+      button {
+        width: 100%;
+        padding: 10px;
+        color: rgb(255, 0, 85);
+        font-weight: bold;
+        background-color: white;
+        border: none;
+        border-top: 1px solid rgb(197, 193, 193);
+      }
+      #span1 {
+        font-weight: 700;
+      }
+      span {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      #footerImg {
+        margin-top: 100px;
+      }
+      #priceDiv {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+        /* text-align: center; */
+        padding-left: 10px;
+        flex-wrap: nowrap;
+      }
+      .div3 {
+        text-overflow: ellipsis;
+        white-space: -moz-pre-wrap;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="ddown"></div>
+    <div id="studioShow"></div>
+    <div id="ddownP"></div>
+    <div id="container">
+      <div id="box1">
+        <span id="span1">My Wishlist</span>
+        <span id="span2"></span>
+      </div>
+      <div id="box2"></div>
+    </div>
+    <div id="footer">
+      <img id="footerImg" src="footerFinal.png" alt="" />
+    </div>
+  </body>
+</html>
+<script type="module">
+  import men from "./componants/men.js";
+  import women from "./componants/women.js";
+  import kids from "./componants/kids.js";
+  import home from "./componants/home.js";
+  import beauty from "./componants/beauty.js";
+  import profile from "./componants/profile.js";
+  import navbar from "./componants/nav.js";
+  import studio from "./componants/studio.js";
+
+  document.getElementById("header").innerHTML = navbar();
+
+  const showMen = () => {
+    document.getElementById("ddown").innerHTML = men();
+  };
+  document.getElementById("menCat").addEventListener("mouseover", showMen);
+
+  const removeMen = () => {
+    document.getElementById("ddown").innerHTML = null;
+    document.getElementById("ddownP").innerHTML = null;
+  };
+  document.getElementById("ddown").addEventListener("mouseleave", removeMen);
+
+  const showWomen = () => {
+    document.getElementById("ddown").innerHTML = women();
+  };
+  document.getElementById("womenCat").addEventListener("mouseover", showWomen);
+
+  const showKids = () => {
+    document.getElementById("ddown").innerHTML = kids();
+  };
+  document.getElementById("kidCat").addEventListener("mouseover", showKids);
+
+  const showHome = () => {
+    document.getElementById("ddown").innerHTML = home();
+  };
+  document.getElementById("homeCat").addEventListener("mouseover", showHome);
+
+  const showBeauty = () => {
+    document.getElementById("ddown").innerHTML = beauty();
+  };
+  document
+    .getElementById("beautyCat")
+    .addEventListener("mouseover", showBeauty);
+
+  const showProfile = () => {
+    document.getElementById("ddownP").innerHTML = profile();
+  };
+  document
+    .getElementById("profileU")
+    .addEventListener("mouseover", showProfile);
+
+  const showStudio = () => {
+    document.getElementById("ddown").innerHTML = studio();
+  };
+  document.getElementById("Studio").addEventListener("mouseover", showStudio);
+
+  const removeProf = () => {
+    document.getElementById("ddownP").innerHTML = null;
+  };
+  document.getElementById("ddownP").addEventListener("mouseleave", removeProf);
+
+  const dispStudio = () => {
+    document.getElementById("ddownP").innerHTML = null;
+    document.getElementById("ddown").innerHTML = null;
+    document.getElementById("studioShow").innerHTML = studio();
+  };
+  document.getElementById("Studio").addEventListener("mouseover", dispStudio);
+
+  const removeStudio = () => {
+    document.getElementById("studioShow").innerHTML = null;
+  };
+  document
+    .getElementById("Studio")
+    .addEventListener("mouseleave", removeStudio);
+
+  var box = document.getElementById("box2");
+  var product = JSON.parse(localStorage.getItem("men_wislist_data"));
+  console.log("product:", product);
+  displayItems(product);
+
+  let cartdata = JSON.parse(localStorage.getItem("cart_data")) || [];
+
+  function displayItems(product) {
+    // box.innerHTML = "";
+    product.forEach(function (item) {
+      let div1 = document.createElement("div");
+      div1.setAttribute("class", "div1");
+      let div2 = document.createElement("div");
+      let div3 = document.createElement("div");
+      div3.setAttribute("class", "div3");
+      let img = document.createElement("img");
+      img.src = item.images.image1;
+      img.setAttribute("class", "img");
+      let name = document.createElement("h3");
+      name.textContent = item.title;
+      name.style.flexWrap = "nowrap";
+      let price = document.createElement("h3");
+      price.innerText = `Rs.${item.price}`;
+      price.style.fontWeight = "bold";
+
+      let off_price = document.createElement("p");
+      off_price.innerText = `Rs.${item.off_price}`;
+      off_price.style.textDecoration = "line-through";
+
+      let discount = document.createElement("p");
+      discount.innerText = `(${item.discount}% OFF)`;
+      discount.style.color = "orange";
+
+      let div4 = document.createElement("div");
+      div4.setAttribute("id", "priceDiv");
+      div4.append(price, off_price, discount);
+      let btn = document.createElement("button");
+      btn.textContent = "MOVE TO BAG";
+      btn.addEventListener("click", function () {
+        cartdata.push(item);
+        localStorage.setItem("cart_data", JSON.stringify(cartdata));
+        window.location.href = "bag.html";
+      });
+
+      div3.append(name, div4);
+      div2.append(img);
+      div1.append(div2, div3, btn);
+      box.append(div1);
+    });
+  }
+  // function bag() {
+  //   window.location.href = "bag.html";
+  // }
+
+  document.querySelector("#span2").innerHTML = `${product.length} items`;
+
+  document.querySelector("#cartBag").addEventListener("click", function () {
+    window.location.href = "bag.html";
+  });
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>greetings</title>
+    <link rel="stylesheet" href="./style/nav.css" />
+  </head>
+  <body>
+    <div id="greetingDiv">
+      <img
+        class="grettimg"
+        src="https://nebula.wsimg.com/d312a6d1541966a1f46cc40db9e0761b?AccessKeyId=7DBD2C925D930A08C6BB&disposition=0&alloworigin=1"
+        alt=""
+      />
+    </div>
+  </body>
+</html>
+<script>
+  let gifArr = [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/disp/a7a7b120588211.56042b16edecd.gif",
+  ];
+
+  setTimeout(function () {
+    document.getElementById("greetingDiv").innerHTML = null;
+    var img = document.createElement("img");
+    img.setAttribute(
+      "src",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/disp/a7a7b120588211.56042b16edecd.gif"
+    );
+    img.setAttribute("class", "grettimg");
+
+    document.getElementById("greetingDiv").append(img);
+  }, 2000);
+</script>
