@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="./style/nav.css">
+    <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    />
+    <style>
+        
+      body {
+        background-color: rgb(255, 240, 239);
+      }
+      
+      #login-container {
+        max-width: 400px;
+        margin: auto;
+        background-color: white;
+        /* height: 823px; */
+        margin-top: 95px;
+      }
+      #login-container > div:nth-child(1) {
+        height: 230px;
+        padding: 9% 14% 0 14%;
+      }
+      #login-container > div:nth-child(2) {
+        height: 360px;
+        padding: 0 14%;
+      }
+      #login-container img {
+        width: 100%;
+        height: 196px;
+      }
+      #login-container h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .btn1 {
+        height: 48px;
+        width: 139.828px;
+        border: 1px solid #d4d5d9;
+        background-color: white;
+        box-sizing: border-box;
+        border-radius: 2px;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        margin-right: 2px;
+        letter-spacing: 1px;
+        cursor: pointer;
+      }
+      .btn2 {
+        display: block;
+        width: 288px;
+        margin-top: 10px;
+      }
+      #login-container .horizontal {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+      #login-container .horizontal > div:nth-child(1) {
+        flex-basis: 45%;
+        margin-top: 10px;
+      }
+      #login-container .horizontal > div:nth-child(2) {
+        flex-basis: 10%;
+        text-align: center;
+        font-size: 16px;
+        color: #535766;
+      }
+      #login-container .horizontal > div:nth-child(3) {
+        flex-basis: 45%;
+        margin-top: 10px;
+      }
+
+      
+      span {
+        color: black;
+        /* background-color: white; */
+      }
+
+    </style>
+</head>
+<body>
+  <div id="header">
+        
+  </div>
+  <div id="ddown">
+      
+  </div>
+  <div id="studioShow">
+
+  </div>
+  <div id="ddownP">
+      
+  </div>
+    <div id="login-container">
+      <div>
+        <img
+          src="https://constant.myntassets.com/pwa/assets/img/al_banner.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <h2>Already have an account?</h2>
+
+        <button onclick="loginPage()" class="btn1 btn2">
+          LOGIN WITH USERNAME
+        </button>
+        <div class="horizontal">
+          <div><hr /></div>
+          <div>OR</div>
+          <div><hr /></div>
+        </div>
+        <h2>New to Myntra?</h2>
+        <button onclick="signupPage()" class="btn1 btn2">
+          CREATE NEW ACCOUNT
+        </button>
+      </div>
+    </div>
+    <div id="footer">
+      <img id="footerImg" src="footerFinal.png" alt="">
+  </div>
+</body>
+</html>
+<script type="module">
+    import men from "./componants/men.js";
+    import women from "./componants/women.js";
+    import kids from "./componants/kids.js";
+    import home from "./componants/home.js";
+    import beauty from "./componants/beauty.js";
+    import profile from "./componants/profile.js";
+    import navbar from "./componants/nav.js";
+    import studio from "./componants/studio.js"
+
+    document.getElementById("header").innerHTML = navbar();
+
+    
+
+    const showMen = ()=> {
+        document.getElementById("ddown").innerHTML = men();
+    }
+    document.getElementById("menCat").addEventListener("mouseover",showMen);
+
+    const removeMen = () => {
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddown").addEventListener("mouseleave",removeMen);
+
+    const showWomen = () => {
+        document.getElementById("ddown").innerHTML = women();
+    }
+    document.getElementById("womenCat").addEventListener("mouseover",showWomen);
+
+    const showKids = ()=> {
+        document.getElementById("ddown").innerHTML = kids();
+    }
+    document.getElementById("kidCat").addEventListener("mouseover",showKids);
+
+    const showHome = ()=> {
+        document.getElementById("ddown").innerHTML = home();
+    }
+    document.getElementById("homeCat").addEventListener("mouseover",showHome);
+
+    const showBeauty = ()=> {
+        document.getElementById("ddown").innerHTML = beauty();
+    }
+    document.getElementById("beautyCat").addEventListener("mouseover",showBeauty);
+
+
+    const showProfile = ()=> {
+        document.getElementById("ddownP").innerHTML = profile();
+    }
+    document.getElementById("profileU").addEventListener("mouseover",showProfile);
+
+    const showStudio = ()=> {
+        document.getElementById("ddown").innerHTML = studio();
+    }
+    document.getElementById("Studio").addEventListener("mouseover",showStudio);
+
+    const removeProf = () => {
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+
+</script>
+
+
+
+<!-- Nav bar complete -->
+<!-- =============================================================================== -->
+  <script>
+    function loginPage() {
+        window.location.href = "login.html"; 
+    }
+  
+    function signupPage() {
+        window.location.href = "signup.html";
+    }
+  </script>

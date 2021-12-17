@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/nav.css">
+    <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        body{
+            background-color: rgb(255, 240, 239);
+        }
+       
+        #sign-container{
+            max-width: 400px;
+            margin: auto;
+            background-color: white;
+            height:500px ;
+            margin-top: 200px;
+            
+        }
+        #sign-container>div{
+            padding: 5% 9% 0 9%;
+        }
+        #sign-container h3{
+          
+            margin-bottom: 35px;
+            
+        }
+        #sign-container p{
+            margin-top: 20px;
+            font-size:x-small;
+           
+        }
+       
+        #sign-container input{
+            height: 40px;
+            width: 320px;
+            display: block;
+            box-sizing: border-box;
+            padding: 11px 12px 11px 12px;
+            border: 1px solid #dcdddf;
+            margin-bottom: 30px;
+        }
+        #sign-container button{
+            background-color: #FF3F6C;
+            color: #ffffff;
+            height: 40px;
+            width: 320px;
+            border: 0;
+            margin-top: 30px;
+           
+
+        }
+
+span{
+    color:red;
+    font-family:monospace;
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        
+    </div>
+    <div id="ddown">
+        
+    </div>
+    <div id="studioShow">
+
+    </div>
+    <div id="ddownP">
+        
+    </div>
+    <div id="sign-container">
+        <div>
+            <h3>Login with username</h2>
+            <form >
+                
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="password" id="password" placeholder="Create Password">  
+                
+                
+                <button onclick="Login(event)">LOGIN</button>
+            </form>
+            <p id="login-status">Forgot your password? <span id="kia">Reset Here</span></p>
+            <p id="login-status1">Have a trouble logging in? <span>Get Help</span></p>
+        </div>
+        
+</body>
+</html>
+<script type="module">
+    import men from "./componants/men.js";
+    import women from "./componants/women.js";
+    import kids from "./componants/kids.js";
+    import home from "./componants/home.js";
+    import beauty from "./componants/beauty.js";
+    import profile from "./componants/profile.js";
+    import navbar from "./componants/nav.js";
+    import studio from "./componants/studio.js"
+
+    document.getElementById("header").innerHTML = navbar();
+
+    
+
+    const showMen = ()=> {
+        document.getElementById("ddown").innerHTML = men();
+    }
+    document.getElementById("menCat").addEventListener("mouseover",showMen);
+
+    const removeMen = () => {
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddown").addEventListener("mouseleave",removeMen);
+
+    const showWomen = () => {
+        document.getElementById("ddown").innerHTML = women();
+    }
+    document.getElementById("womenCat").addEventListener("mouseover",showWomen);
+
+    const showKids = ()=> {
+        document.getElementById("ddown").innerHTML = kids();
+    }
+    document.getElementById("kidCat").addEventListener("mouseover",showKids);
+
+    const showHome = ()=> {
+        document.getElementById("ddown").innerHTML = home();
+    }
+    document.getElementById("homeCat").addEventListener("mouseover",showHome);
+
+    const showBeauty = ()=> {
+        document.getElementById("ddown").innerHTML = beauty();
+    }
+    document.getElementById("beautyCat").addEventListener("mouseover",showBeauty);
+
+
+    const showProfile = ()=> {
+        document.getElementById("ddownP").innerHTML = profile();
+    }
+    document.getElementById("profileU").addEventListener("mouseover",showProfile);
+
+    const showStudio = ()=> {
+        document.getElementById("ddown").innerHTML = studio();
+    }
+    document.getElementById("Studio").addEventListener("mouseover",showStudio);
+
+    const removeProf = () => {
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+
+</script>
+<!-- NAVBAR COMPLETE -->
+ <!-- ========================================================================================================== -->
+<script>
+     async function Login(e) {
+         e.preventDefault()
+        let login_data = {
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        };
+
+        login_data = JSON.stringify(login_data);
+        console.log(login_data);
+        
+        let login_api = `https://masai-api-mocker.herokuapp.com/auth/login`;
+
+        let response = await fetch(login_api, {
+          method: "POST",
+          body: login_data,
+        // mode:"no-cors"
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        let data = await response.json();
+        console.log("data:", data);
+
+      
+      window.location.href="home.html"
+     }
+    
+</script>

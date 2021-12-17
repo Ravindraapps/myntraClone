@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="./style/nav.css">
+    <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+         body{
+            background-color: rgb(255, 240, 239);
+             max-height: fit-content; */
+        }
+        #navbar{
+            height: 80px;
+            margin-bottom:22px;
+
+        }
+        #sign-container{
+            max-width: 400px;
+            margin: auto;
+            background-color: white;
+            /* height:500px ; */
+            margin-top: 200px;
+            
+        }
+        #sign-container>div{
+            padding: 5% 9% 0 9%;
+        }
+        #sign-container h3{
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+     
+        #sign-container span{
+            color:#dcdddf ;
+        }
+        #sign-container input{
+            height: 40px;
+            width: 320px;
+            display: block;
+            box-sizing: border-box;
+            padding: 11px 12px 11px 12px;
+            border: 1px solid #dcdddf;
+            margin-bottom: 30px;
+        }
+        #sign-container button{
+            background-color: #FF3F6C;
+            color: #ffffff;
+            height: 40px;
+            width: 400px;
+            border: 0;
+            margin-top: 30px;
+            margin-left: -11%;
+
+        }
+       
+
+span {
+  color: black;
+  /* background-color: white; */
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+        
+    </div>
+    <div id="ddown">
+        
+    </div>
+    <div id="studioShow">
+
+    </div>
+    <div id="ddownP">
+        
+    </div>
+    <!-- ============================================ -->
+    <div id="sign-container">
+        <div>
+            <h3>Complete your sign up</h2>
+            <form >
+                <input type="text" name="name" id="name" placeholder="Full Name" >
+                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="password" name="password" id="password" placeholder="Create Password">  
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="number" name="number" id="mobile" placeholder="Phone Number">
+                <input type="text" name="description" id="description" placeholder="Description">
+                <button onclick="Register()">CREATE ACCOUNT</button>
+            </form>
+        </div>
+        <p id="status"></p>
+        
+        
+        
+        
+</body>
+</html>
+<script type="module">
+    import men from "./componants/men.js";
+    import women from "./componants/women.js";
+    import kids from "./componants/kids.js";
+    import home from "./componants/home.js";
+    import beauty from "./componants/beauty.js";
+    import profile from "./componants/profile.js";
+    import navbar from "./componants/nav.js";
+    import studio from "./componants/studio.js"
+
+    document.getElementById("header").innerHTML = navbar();
+
+    
+
+    const showMen = ()=> {
+        document.getElementById("ddown").innerHTML = men();
+    }
+    document.getElementById("menCat").addEventListener("mouseover",showMen);
+
+    const removeMen = () => {
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddown").addEventListener("mouseleave",removeMen);
+
+    const showWomen = () => {
+        document.getElementById("ddown").innerHTML = women();
+    }
+    document.getElementById("womenCat").addEventListener("mouseover",showWomen);
+
+    const showKids = ()=> {
+        document.getElementById("ddown").innerHTML = kids();
+    }
+    document.getElementById("kidCat").addEventListener("mouseover",showKids);
+
+    const showHome = ()=> {
+        document.getElementById("ddown").innerHTML = home();
+    }
+    document.getElementById("homeCat").addEventListener("mouseover",showHome);
+
+    const showBeauty = ()=> {
+        document.getElementById("ddown").innerHTML = beauty();
+    }
+    document.getElementById("beautyCat").addEventListener("mouseover",showBeauty);
+
+
+    const showProfile = ()=> {
+        document.getElementById("ddownP").innerHTML = profile();
+    }
+    document.getElementById("profileU").addEventListener("mouseover",showProfile);
+
+    const showStudio = ()=> {
+        document.getElementById("ddown").innerHTML = studio();
+    }
+    document.getElementById("Studio").addEventListener("mouseover",showStudio);
+
+    const removeProf = () => {
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- navbar======================================================================= -->
+<script>
+     async function Register() {
+    let signup_data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      username: document.getElementById("username").value,
+      mobile: document.getElementById("mobile").value,
+      description: document.getElementById("description").value,
+    };
+
+    signup_data = JSON.stringify(signup_data);
+    console.log("signup_data:", signup_data);
+
+    let register_api = `https://masai-api-mocker.herokuapp.com/auth/register`;
+
+    let response = await fetch(register_api, {
+      method: "POST",
+
+      body: signup_data,
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let data = await response.json();
+    console.log(data);
+  
+  window.location.href="login.html"
+     }
+
+</script>

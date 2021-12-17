@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Navbar</title>
+    <link rel="stylesheet" href="./style/nav.css">
+    <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+</head>
+<style>
+    /* div{
+   border:solid 1px black;
+} */
+
+#main{
+    display:flex;
+    justify-content: space-evenly;
+    padding: 15px; 
+     height:850px;
+    
+    
+
+} 
+#clicked_data{
+   
+width:50%;
+padding: 25px;
+
+
+
+
+}
+
+#image1{
+    width:100%;
+    height:800px
+}
+#right_box{
+
+width: 50%;
+padding: 20px;
+font-family: sans-serif
+
+;
+
+}
+#do{
+    text-decoration: line-through;
+}
+#pin{
+height:40px;
+width:250px
+}
+ul{
+    text-decoration: none;
+}
+#button{
+    
+    margin-top: 50px;
+    font-weight: 100px;
+    /* padding:20px; */
+    
+    
+}
+#btn1{
+    height:60px;
+    width:240px;
+    background-color:#ff3e6c;
+   border-radius: 5px;
+    color: white;
+}
+#btn2{
+    height:60px;
+    width:240px;
+    font-weight:50px;
+    margin-left: 50px;
+    
+   
+}
+#content{
+    color: #908680;
+}
+#recommendation{
+    display:grid;
+        grid-template-columns: repeat(6,15%);
+        grid-gap:2%;
+
+        /* justify-content: space-between; */
+}
+
+
+#dummy{
+      
+   width: 100%;
+    height:60px;
+    background-color:#e9efff;
+     margin-top: 20px; 
+}
+
+#gas{
+    display: flex;
+    height: 100%;
+    margin-left:300px;
+}
+
+
+
+</style>
+<body>
+    <div id="header">
+        
+    </div>
+    <div id="ddown">
+        
+    </div>
+    <div id="studioShow">
+
+    </div>
+    <div id="ddownP">
+        
+    </div>
+    <div id="dummy">
+        <div id = "gas">
+            <img style="margin-left: 100px;"src="https://constant.myntassets.com/pwa/assets/img/rupee_illustration.png"> 
+            <h4 id="pack">Invite friends to Myntra’s EORS & get up to ₹150 <button style="color: red";>INVITE NOW></button></h4>
+        </div>
+     
+
+
+    </div>
+    <h4 style="padding:15px;"><span style="color: grey;">Home/Clothing/Men Clothing/Jackets</span>/Levis Jackets>More By Levis</h4>
+    <div id="main">
+        <div id="clicked_data">
+          
+        </div>
+        
+        <div id="right_box">
+<h2>Levis</h2>
+<h3 style="color: #908680;">Men Olive Green & Black Colourblocked Hooded Tailored Jacket</h3>
+<h3>Rs. 4259
+    <span id="do">7099</span>
+   (40% OFF)</h3>
+
+<h5 style=color:#1eb0a0;margin-top:;>inclusive of all taxes</h5>
+<h5>SELECT  SIZE</h5>
+<p style="font-weight:600;font-size:20px;"> <span style="border:1px solid;padding:1% 3%" class="ml-3">M</span> <span style="border:1px solid;padding:1% 4%" class="ml-2">L</span> <span style="border:1px solid;padding:1% 3%" class="ml-2">XL</span> <br class="break"><a href="#/" style="color:black" class="ml-3 open-pop-container"></a>
+
+<div id="button">
+    <button id="btn1" onclick="bagItems()">ADD TO BAG</button>
+    <button id="btn2">WISHLIST</button>
+</div>
+<h3>DELIVERY OPTIONS</h3>
+
+<div id="content">
+    <input type="text"  id="pin" placeholder="Enter a PIN code" >
+    <h5 style="margin-top:1%;">Please enter PIN code to check delivery time & Pay on Delivery Availability</h5></p>
+
+    
+    <ul>
+        <li>100% Original Products</li>
+        <li>Pay on delivery might be available</li>
+        <li>Easy 15 days returns and exchanges</li>
+        <li>Try & Buy might be available</li>
+        <li>Regular fit</li>
+      
+        <li>Polo with classic collar</li>
+        <li>Hand wash</li>
+    </ul>
+</div>
+<h3>BEST OFFERS</h3>
+<p>This product is already at its best price</p>
+<ul>
+    <li>EMI option available</li>
+</ul>
+
+<p style=color:red;margin-top:0px>View Plan</p>
+        </div>
+
+    </div>
+    <h2>SIMILAR PRODUCTS</h2>
+    <div id="recommendation">
+       
+       
+    </div>
+    <div id="footer">
+        <img id="footerImg" src="footerFinal.png" alt="">
+    </div>
+</body>
+</html>
+<script type="module">
+    import men from "./componants/men.js";
+    import women from "./componants/women.js";
+    import kids from "./componants/kids.js";
+    import home from "./componants/home.js";
+    import beauty from "./componants/beauty.js";
+    import profile from "./componants/profile.js";
+    import navbar from "./componants/nav.js";
+    import studio from "./componants/studio.js"
+
+    document.getElementById("header").innerHTML = navbar();
+
+    
+
+    const showMen = ()=> {
+        document.getElementById("ddown").innerHTML = men();
+    }
+    document.getElementById("menCat").addEventListener("mouseover",showMen);
+
+    const removeMen = () => {
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddown").addEventListener("mouseleave",removeMen);
+
+    const showWomen = () => {
+        document.getElementById("ddown").innerHTML = women();
+    }
+    document.getElementById("womenCat").addEventListener("mouseover",showWomen);
+
+    const showKids = ()=> {
+        document.getElementById("ddown").innerHTML = kids();
+    }
+    document.getElementById("kidCat").addEventListener("mouseover",showKids);
+
+    const showHome = ()=> {
+        document.getElementById("ddown").innerHTML = home();
+    }
+    document.getElementById("homeCat").addEventListener("mouseover",showHome);
+
+    const showBeauty = ()=> {
+        document.getElementById("ddown").innerHTML = beauty();
+    }
+    document.getElementById("beautyCat").addEventListener("mouseover",showBeauty);
+
+
+    const showProfile = ()=> {
+        document.getElementById("ddownP").innerHTML = profile();
+    }
+    document.getElementById("profileU").addEventListener("mouseover",showProfile);
+
+    const showStudio = ()=> {
+        document.getElementById("ddown").innerHTML = studio();
+    }
+    document.getElementById("Studio").addEventListener("mouseover",showStudio);
+
+    const removeProf = () => {
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+
+</script>
+<!-- ============================================================================== -->
+
+<script>
+
+var preview_Data = JSON.parse(localStorage.getItem("preview_Data"))
+console.log(preview_Data)
+handleDisplayProducts(preview_Data) ;
+
+function handleDisplayProducts(data){
+    document.getElementById("clicked_data").innerHTML = "" ;
+    // console.log(data)
+    let prod = [];
+    prod.push(data)
+    console.log(prod)
+    prod.map(function(el){
+
+        var card = document.createElement("div")
+
+        var img1 = document.createElement("img") ;
+       img1.setAttribute("src", el.images.image1) ;
+        img1.setAttribute("id","image1")
+
+     
+       var img2 = document.createElement("img") ;
+       img2.setAttribute("src", el.images.image2) ;
+
+       var img3 = document.createElement("img") ;
+       img3.setAttribute("src", el.images.image3) ;
+       var img4 = document.createElement("img") ;
+       img4.setAttribute("src", el.images.image4) ;
+
+
+      card.append(img1) ;
+       document.getElementById("clicked_data").append(card)
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ----------------------------------------
+
+    var ProductData = [
+    {
+            prodName: "Moncler",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/2290028/2018/2/7/11517989836087-HIGHLANDER-Men-Blue-Slim-Fit-Solid-Casual-Shirt-4461517989835897-1.jpg',
+            prodType:  "Maya Lacquered Down Jacket",
+            // prodSubType: "Live In Pocket Joggers",
+            MRP : 11841 ,
+            Star : "★★★★",
+            
+            
+        },
+        {
+            prodName: "Burberry",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/2290028/2018/2/7/11517989835985-HIGHLANDER-Men-Blue-Slim-Fit-Solid-Casual-Shirt-4461517989835897-5.jpg',
+            prodType: "Sherwood Monogram Button-Up Shirt",
+            MRP :  3532 ,
+            Star : "★★★★★",
+            
+            
+        },
+        {
+            prodName: "Burberry",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/2290028/2018/2/7/11517989836063-HIGHLANDER-Men-Blue-Slim-Fit-Solid-Casual-Shirt-4461517989835897-2.jpg',
+            prodType: "Eddie Pique Polo",
+            MRP : 2809 ,
+            Star : "★★★★",
+            
+            
+        },
+        {
+            prodName: "Burberry",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/2290028/2018/2/7/11517989836001-HIGHLANDER-Men-Blue-Slim-Fit-Solid-Casual-Shirt-4461517989835897-4.jpg',
+            prodType: "Walton TB Embroidered Short Sleeve Stretch Cotton Pique Polo",
+            MRP : 2970 ,
+            Star : "★★★★★",
+            
+            
+        },
+        {
+            prodName: "Burberry ",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/6518468/2018/5/23/c18ee8eb-06f6-4d10-8f4a-680ac10fccf21527055151093-Sojanya-Since-1958-Grey-Silk-Kurta-Pyjama--Blue-Printed-Nehru-Jacket-SET-4231527055150856-1.jpg',
+            prodType: "Somerton Plaid Button-Up Shirt",
+            MRP :3533 ,
+            Star : "★★★★★",
+            
+            
+        },
+        {
+            prodName: "Givenchy",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/6518468/2018/5/23/81b26584-a36d-414d-9653-195b978884141527055151039-Sojanya-Since-1958-Grey-Silk-Kurta-Pyjama--Blue-Printed-Nehru-Jacket-SET-4231527055150856-3.jpg',
+            prodType: "Slim Fit Logo T-Shirt",
+            MRP :3953,
+            Star : "★★★★★",
+            
+            
+        },
+        {
+            prodName: "Monclear Grenoble",
+            prodImage :'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/6518468/2018/5/23/f6d3d7cd-1acc-4e28-b8ee-29e5d9cec46c1527055151075-Sojanya-Since-1958-Grey-Silk-Kurta-Pyjama--Blue-Printed-Nehru-Jacket-SET-4231527055150856-2.jpg',
+            prodType: "Water Repellent Down Puffer Jacket",
+            MRP : 1168 ,
+            
+        },
+        {
+            prodName: "Monclear",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/13238920/2021/8/6/eeb519eb-0f0c-4c75-b74c-8d629c055cd71628241598817-Anouk-Men-Red-Striped-Kurta-6691628241598334-4.jpg',
+            prodType: "Montreuil Logo Water Resistant Lightweight Down Puffer Vest",
+            MRP : 1159 ,
+            
+            
+        },
+        {
+            prodName: "Off-White",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/6518468/2018/5/23/83986b07-a78e-4999-b2bd-7bacbd5532411527055151001-Sojanya-Since-1958-Grey-Silk-Kurta-Pyjama--Blue-Printed-Nehru-Jacket-SET-4231527055150856-4.jpg',
+            prodType:  "Acrylic Arrows Logo Slim Cotton Graphic Tee",
+            // prodSubType: "Live In Pocket Joggers",
+            MRP : 3071,
+            
+            
+        },
+        {
+            prodName: "Monclear",
+            prodImage :'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/13238920/2021/8/6/eeb519eb-0f0c-4c75-b74c-8d629c055cd71628241598817-Anouk-Men-Red-Striped-Kurta-6691628241598334-4.jpg' ,
+            prodType: "Men's Tricolor Stripe Tape Track Jacket",
+            MRP : 6221 ,
+            
+            
+        },
+        {
+            prodName: "Burberry",
+            prodImage : 'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2021/6/19/83e7a941-1882-4541-b740-995a5565047f1624115526542-4.jpg',
+            prodType: "Walton TB Embroidered Short Sleeve Stretch Cotton Pique Polo",
+            MRP : 2970 ,
+            Star : "★★★★★",
+            
+            
+        },
+        {
+            prodName: "Burberry ",
+            prodImage :'https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2021/6/19/3ec609b9-d503-4018-9b44-8973a43817391624115526512-1.jpg' ,
+            prodType: "Somerton Plaid Button-Up Shirt",
+            MRP :3533 ,
+            Star : "★★★★★",
+            
+            
+        },
+    ]
+
+    localStorage.setItem("ProductData", JSON.stringify(ProductData));
+    var womenData = JSON.parse(localStorage.getItem("ProductData"));
+
+    
+    productList(womenData);
+
+    function productList(womenData) {
+        document.getElementById("recommendation").innerHTML="";
+     womenData.map(function (item) {
+        var imgDiv = document.createElement("div");
+        imgDiv.setAttribute("class", "imgDivClass");
+        var img = document.createElement("img");
+        img.setAttribute("class","imgClass")
+        img.setAttribute("src",item.prodImage);
+        var p1 = document.createElement("p");
+        p1.setAttribute("class","p1Class");
+        p1.textContent = item.prodName;
+        var p2 = document.createElement("p");
+        p2.setAttribute("class","p2Class");
+        p2.textContent = item.prodType;
+        var p3 = document.createElement("p");
+        p3.setAttribute("class","p3Class");
+        p3.textContent = `Rs. ${item.MRP}`;
+        var p4 = document.createElement("p");
+        p4.setAttribute("class","p4Class");
+        p4.textContent = item.Star;
+        var p5 = document.createElement("p");
+        p5.setAttribute("class","p5Class");
+        p5.textContent = item.Deliver;
+        imgDiv.append(img, p1, p2, p3, p5);
+        recommendation.append(imgDiv);
+     })
+    }
+
+
+// CART BUTTON
+var cart_Data ;
+function bagItems(){
+    localStorage.setItem("cart_Data",JSON.stringify(preview_Data));
+    //  console.log(cart_Data)
+}
+
+
+</script>
