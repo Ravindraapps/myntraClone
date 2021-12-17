@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <link rel="stylesheet" href="./style/nav.css" />
+  <script
+    src="https://kit.fontawesome.com/cd2d18a745.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://kit.fontawesome.com/256cec0589.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <style>
+    * {
+      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+    }
+    body {
+      margin-top: 90px;
+    }
+    #main {
+      border: 1px solid gray;
+      padding: 20px;
+      position: relative;
+      /* margin-top: 90px; */
+    }
+    #container {
+      display: grid;
+      grid-template-columns: 18% 82%;
+      position: absolute;
+    }
+    #filter_sidebar {
+      /* position:-webkit-sticky; */
+      position: sticky;
+      top: 0;
+      padding: 20px;
+      line-height: 30px;
+      font-size: 18px;
+      height: fit-content;
+      margin-top: 0;
+      border: 1px solid gray;
+    }
+    #products {
+      border: 1px solid gray;
+      padding: 20px;
+    }
+    #filter_sidebar > div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: -25px;
+    }
+    #products {
+      display: grid;
+      grid-template-columns: repeat(5, 20%);
+      gap: 5px;
+      line-height: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    #products > div {
+      padding: 30px;
+      margin-top: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: -moz-pre-wrap;
+      white-space: nowrap;
+    }
+    #products > div > div > img {
+      width: 100%;
+    }
+
+    #priceDiv {
+      display: flex;
+      gap: 5%;
+      align-items: center;
+    }
+    #imgDiv {
+      position: relative;
+    }
+    #ratingDiv {
+      display: flex;
+      gap: 5px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      height: 20px;
+      font-size: 15px;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    #ratingDiv > p {
+      margin-top: 0px;
+    }
+    #main > div {
+      display: flex;
+      justify-content: space-between;
+    }
+    #main {
+      position: relative;
+      /* overflow: visible; */
+    }
+    #sortbtn {
+      height: 50px;
+      background-color: white;
+      border-style: none;
+      border: 1px solid gray;
+      font-size: 15px;
+      padding: 20px;
+      padding-top: 0;
+      /* position: relative; */
+    }
+    #sort {
+      position: fixed;
+      background-color: white;
+      margin-top: 0;
+      /* overflow: visible; */
+    }
+    #sort > ul > li {
+      list-style: none;
+    }
+    #sort > ul > li > button {
+      background-color: white;
+      border-style: none;
+      font-size: 15px;
+    }
+    select,
+    option {
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #sortId {
+      border: 1px solid gray;
+    }
+    #wish_btn {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      border: 1px solid gray;
+      overflow: hidden;
+      font-weight: bold;
+      align-items: center;
+      width: 100%;
+    }
+    #wishlist_div {
+      position: relative;
+      left: 0;
+      bottom: 70px;
+      visibility: hidden;
+      /* display:none; */
+      /* bottom: 20px;
+      left: 20px; */
+      background-color: white;
+      /* height: 20px; */
+      /* font-size: 13px; */
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      opacity: 100%;
+      width: 94%;
+      margin-bottom: -90px;
+      /* z-index: 10px */
+    }
+  </style>
+  <body>
+    <div id="header"></div>
+    <div id="ddown"></div>
+    <div id="ddownP"></div>
+    <div id="main">
+      <p>Home / Clothing / <span style="font-weight: bold">Women </span></p>
+      <div>
+        <h3>FILTERS</h3>
+        <div id="sortId">
+          <label for="">Sort by</label>
+          <select id="sortByPrice">
+            <option value="rel">Recommended</option>
+            <option value="low">Low To High</option>
+            <option value="high">High To Low</option>
+            <option value="disc">Discount</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="filter_sidebar">
+        <label for=""><h4>BRAND</h4></label>
+        <input class="checkk" id="roadster" type="checkbox" />Roadster
+        <span>(2743)</span><br />
+        <input class="checkk" id="hrx" type="checkbox" />HRX
+        <span>(1656)</span> <br />
+        <input class="checkk" id="hm" type="checkbox" />H&M<span>(2318)</span>
+        <br />
+        <input class="checkk" id="clovia" type="checkbox" />Clovia
+        <span>(1408)</span> <br />
+        <input class="checkk" id="kalini" type="checkbox" />Kalini
+        <span>(1234)</span> <br />
+        <input class="checkk" id="dressberry" type="checkbox" />Dressberry
+        <span>(125)</span> <br />
+        <input class="checkk" id="celfie" type="checkbox" />Celfie Design
+        <span>(630)</span><br />
+        <input class="checkk" id="mast" type="checkbox" />Mast & Harbour
+        <span>(1256)</span> <br />
+
+        <hr />
+        <label for=""><h4>COLOR</h4></label>
+        <div>
+          <input class="checkk1" id="black" type="checkbox" />
+          <div
+            style="
+              background-color: black;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Black
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="white" type="checkbox" />
+          <div
+            style="
+              background-color: white;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          White
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="green" type="checkbox" />
+          <div
+            style="
+              background-color: green;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Green
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="navy" type="checkbox" />
+          <div
+            style="
+              background-color: navy;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          NavyBlue
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="red" type="checkbox" />
+          <div
+            style="
+              background-color: red;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Red
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="yellow" type="checkbox" />
+          <div
+            style="
+              background-color: yellow;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Yellow
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="pink" type="checkbox" />
+          <div
+            style="
+              background-color: pink;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Pink
+        </div>
+        <br />
+        <div>
+          <input class="checkk1" id="blue" type="checkbox" />
+          <div
+            style="
+              background-color: blue;
+              border: 1px solid black;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            "
+          ></div>
+          Blue
+        </div>
+        <br />
+      </div>
+      <div id="products"></div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import men from "./componants/men.js";
+  import women from "./componants/women.js";
+  import kids from "./componants/kids.js";
+  import home from "./componants/home.js";
+  import beauty from "./componants/beauty.js";
+  import profile from "./componants/profile.js";
+  import navbar from "./componants/nav.js";
+  import studio from "./componants/studio.js";
+
+  document.getElementById("header").innerHTML = navbar();
+  import { menData } from "./components/data/men.js";
+  let data = menData();
+  console.log(data);
+
+  // import {sort} from "./components/sort.js"
+
+  const showMen = () => {
+    document.getElementById("ddown").innerHTML = men();
+  };
+  document.getElementById("menCat").addEventListener("mouseover", showMen);
+
+  const removeMen = () => {
+    document.getElementById("ddown").innerHTML = null;
+    document.getElementById("ddownP").innerHTML = null;
+  };
+  document.getElementById("ddown").addEventListener("mouseleave", removeMen);
+
+  const showWomen = () => {
+    document.getElementById("ddown").innerHTML = women();
+  };
+  document.getElementById("womenCat").addEventListener("mouseover", showWomen);
+
+  const showKids = () => {
+    document.getElementById("ddown").innerHTML = kids();
+  };
+  document.getElementById("kidCat").addEventListener("mouseover", showKids);
+
+  const showHome = () => {
+    document.getElementById("ddown").innerHTML = home();
+  };
+  document.getElementById("homeCat").addEventListener("mouseover", showHome);
+
+  const showBeauty = () => {
+    document.getElementById("ddown").innerHTML = beauty();
+  };
+  document
+    .getElementById("beautyCat")
+    .addEventListener("mouseover", showBeauty);
+
+  const showProfile = () => {
+    document.getElementById("ddownP").innerHTML = profile();
+  };
+  document
+    .getElementById("profileU")
+    .addEventListener("mouseover", showProfile);
+
+  const showStudio = () => {
+    document.getElementById("ddown").innerHTML = studio();
+  };
+  document.getElementById("Studio").addEventListener("mouseover", showStudio);
+
+  const removeProf = () => {
+    document.getElementById("ddownP").innerHTML = null;
+  };
+  document.getElementById("ddownP").addEventListener("mouseleave", removeProf);
+
+  let products = document.getElementById("products");
+  let wishlist_data = JSON.parse(localStorage.getItem("wishlist_data")) ||[];
+  let displayProduct = (data) => {
+    products.innerHTML = "";
+    let i = 0;
+    let id;
+    data.forEach((product) => {
+      // console.log(product.rating)
+      let imgDiv = document.createElement("div");
+      imgDiv.setAttribute("id", "imgDiv");
+      let div = document.createElement("div");
+
+      // localStorage for preview page---------------->
+
+      div.addEventListener("click", function () {
+        localStorage.setItem("preview_Data",JSON.stringify(product));
+        window.location.href = "previewPage.html";
+      });
+      div.addEventListener("mouseover", function () {
+        div.style.padding = "10px";
+        wishlist_div.style.visibility = "visible";
+        wishlist_div.style.overflow = "visible";
+        // id= setInterval(function(){
+        //       if(i===imgArr.length){
+        //           i=0;
+        //       }
+        //       Object.keys(product.images).forEach(function(key){
+        //         imgArr.push(product.images[key])
+        //       })
+        //       console.log(imgArr)
+        //       image.src=imgArr[i];
+        //       imgDiv.append(image,ratingDiv)
+        //       i++;
+        //   },3000);
+        // startSS();
+      });
+      div.addEventListener("mouseleave", function () {
+        // clearInterval(id)
+        div.style.padding = "20px";
+        wishlist_div.style.visibility = "hidden";
+        wishlist_div.style.overflow = "hidden";
+        // clearInterval(id)
+        imgArr = [];
+        // stopSS();
+      });
+      let wish_btn = document.createElement("div");
+      wish_btn.setAttribute("id", "wish_btn");
+
+      let sizes = document.createElement("p");
+      sizes.innerText = "Sizes : S,M,L,XL,XXL";
+      // sizes.style.color = "gray";
+
+      let wishlist_div = document.createElement("div");
+      wishlist_div.setAttribute("id", "wishlist_div");
+      let wish_name = document.createElement("p");
+      wish_name.innerText = "Wishlist";
+
+      let icon = document.createElement("i");
+      icon.innerHTML = `<i class="far fa-heart"></i>`;
+
+      wish_btn.append(icon, wish_name);
+      wishlist_div.append(wish_btn, sizes);
+      wish_btn.addEventListener("click", function (e) {
+        icon.innerHTML = `<i class="fas fa-heart"></i>`;
+        icon.style.color = "#ff425c";
+        wish_btn.style.backgroundColor = "#32323a";
+        wish_btn.style.color = "white";
+        wishlist_data.push(product);
+        localStorage.setItem("men_wislist_data",JSON.stringify(wishlist_data));
+      });
+
+      let image = document.createElement("img");
+      image.src = product.images.image1;
+
+      let rating = document.createElement("p");
+      rating.innerHTML = product.rating;
+
+      let star_icon = document.createElement("i");
+      star_icon.innerHTML = `<i class="fas fa-star"></i>`;
+      star_icon.style.color = "teal";
+
+      let count = document.createElement("p");
+      count.innerText = `| ${product.count}`;
+
+      let ratingDiv = document.createElement("div");
+      ratingDiv.append(rating, star_icon, count);
+      ratingDiv.setAttribute("id", "ratingDiv");
+      let imgArr = [];
+
+      imgDiv.append(image, ratingDiv);
+
+      let brand = document.createElement("h3");
+      brand.innerText = product.brand;
+
+      let title = document.createElement("p");
+      title.innerText = product.title;
+
+      let price = document.createElement("h3");
+      price.innerText = `Rs.${product.price}`;
+
+      let off_price = document.createElement("p");
+      off_price.innerText = `Rs.${product.off_price}`;
+      off_price.style.textDecoration = "line-through";
+
+      let discount = document.createElement("p");
+      discount.innerText = `(${product.discount}% OFF)`;
+      discount.style.color = "orange";
+
+      let div1 = document.createElement("div");
+      div1.setAttribute("id", "priceDiv");
+
+      div1.append(price, off_price, discount);
+
+      div.append(imgDiv, brand, title, wishlist_div, div1);
+
+      products.append(div);
+    });
+  };
+  var prsort = document.getElementById("sortByPrice");
+  let handlePriceSort = (e) => {
+    console.log("here");
+    let selected = prsort.value;
+    if (selected == "low") {
+      data = data.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      displayProduct(data);
+    } else if (selected == "high") {
+      data = data.sort(function (a, b) {
+        return b.price - a.price;
+      });
+      displayProduct(data);
+    } else if (selected == "disc") {
+      data = data.sort(function (a, b) {
+        return b.discount - a.discount;
+      });
+      displayProduct(data);
+    }
+  };
+
+  prsort.onchange = function () {
+    handlePriceSort();
+  };
+
+  let roadster = document.getElementById("roadster");
+  let mast = document.getElementById("mast");
+  let hm = document.getElementById("hm");
+  let clovia = document.getElementById("clovia");
+  let kalini = document.getElementById("kalini");
+  let dressberry = document.getElementById("dressberry");
+  let celfie = document.getElementById("celfie");
+  let navy = document.getElementById("navy");
+  let green = document.getElementById("green");
+  let white = document.getElementById("white");
+  let black = document.getElementById("black");
+  let pink = document.getElementById("pink");
+  let red = document.getElementById("red");
+  let blue = document.getElementById("blue");
+  let yellow = document.getElementById("yellow");
+
+  $(".checkk").click(function () {
+    $(this).siblings("input:checkbox").prop("checked", false);
+  });
+  $(".checkk1").click(function () {
+    $(this).siblings("input:checkbox").prop("checked", false);
+  });
+
+  let onData = () => {
+    let filtered_data = [];
+
+    if (roadster.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "Roadster") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (mast.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "Mast & Harbour") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (hm.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "H&M") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (clovia.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "Clovia") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (kalini.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "KALINI") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (dressberry.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "Dressberry") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (celfie.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "Celfie Design") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (hrx.checked == true) {
+      data.forEach(function (data) {
+        if (data.brand === "HRX") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (black.checked == true) {
+      console.log("Hrx");
+      data.forEach(function (data) {
+        if (data.color === "black") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (navy.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "navyblue") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (green.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "green") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (white.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "white") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (pink.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "pink") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (blue.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "blue") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+    if (yellow.checked == true) {
+      data.forEach(function (data) {
+        if (data.color === "yellow") {
+          filtered_data.push(data);
+        }
+      });
+      displayProduct(filtered_data);
+    }
+  };
+  document
+    .getElementById("filter_sidebar")
+    .addEventListener("click", function (event) {
+      onData();
+    });
+
+  displayProduct(data);
+</script>
