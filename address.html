@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        font-family: Whitney, Helvetica, Arial, sans-serif;
+      }
+      /* -----------------------nav--------------------------- */
+      #nav {
+        display: flex;
+        gap: 26%;
+        padding: 20px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgb(216, 215, 215);
+        color: rgb(92, 92, 92);
+      }
+      #logo {
+        width: 50px;
+        margin-left: 50px;
+      }
+      #check {
+        width: 25px;
+      }
+      #blue {
+        color: #14cda8;
+        /* text-decoration: underline; */
+      }
+      #blueline {
+        width: 80px;
+        height: 2px;
+        margin-top: 3px;
+        background-color: #14cda8;
+      }
+      #nav-2 {
+        display: flex;
+      }
+      /* -----------------------------------------------container ------------------------------------------*/
+      #container {
+        display: flex;
+        gap: 10%;
+      }
+      /* --------------------------------------------box1---------------------------------------------- */
+      #box1 {
+        margin-left: 20%;
+        border: 1px solid rgb(216, 215, 215);
+        margin-top: 30px;
+        /* padding-left: 20px; */
+      }
+      #box1-1 {
+        padding-left: 20px;
+        border-bottom: 1px solid rgb(216, 215, 215);
+      }
+      input {
+        width: 90%;
+        height: 40px;
+        padding-left: 10px;
+        margin-bottom: 15px;
+        border: 1px solid rgb(216, 215, 215);
+        border-radius: 5px;
+      }
+      .input {
+        width: 41%;
+        border: none;
+        background-color: rgb(236, 236, 236);
+      }
+      #state {
+        margin-left: 15px;
+      }
+      #box1-1-1 {
+        display: flex;
+      }
+      #box1-1-1 > div {
+        border: 1px solid black;
+        padding: 5px 15px;
+        font-size: 14px;
+        border-radius: 20px;
+      }
+      #pink {
+        margin-right: 10px;
+        color: rgb(255, 0, 85);
+        border: 1px solid rgb(255, 0, 85) !important;
+      }
+      #checkbox {
+        width: 20px;
+        height: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        /* border: 1px solid black !important; */
+        /* color: rgb(255, 0, 85); */
+        /* background-color: rgb(255, 0, 85); */
+      }
+      #pinkbtn {
+        border: 1px solid rgb(216, 215, 215);
+        padding: 10px;
+      }
+      button {
+        width: 98%;
+        padding: 15px;
+        background-color: rgb(252, 36, 108);
+        color: white;
+        font-weight: bold;
+        border: none;
+      }
+      /* ---------------------------------------------------box2------------------------------------------- */
+      #box2 {
+        margin-right: 15%;
+        margin-top: -20px;
+        /* margin-left: 10%; */
+      }
+      #box1-2-3 {
+        color: rgb(92, 92, 92);
+      }
+      table {
+        width: 300px;
+        font-size: 12px;
+      }
+      tr {
+        line-height: 25px;
+      }
+      tr > td:nth-child(2) {
+        padding-left: 50px;
+        text-align: right;
+      }
+      .linethrough {
+        text-decoration: line-through;
+      }
+      #totalamount > td {
+        font-weight: bold;
+        font-size: 16px;
+        color: black;
+        border-top: 1px solid rgb(216, 215, 215);
+        line-height: 50px;
+      }
+      .green {
+        color: #14cda8;
+      }
+      .pink {
+        color: rgb(255, 0, 85);
+      }
+      #discountMRP {
+        color: #14cda8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <div>
+        <img
+          id="logo"
+          src="data:image/jpeg;base64,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"
+          alt=""
+        />
+      </div>
+      <div id="nav-2">
+        <span>BAG ---------</span>
+        <span id="blue">
+          <div>ADDRESS</div>
+          <div id="blueline"></div></span
+        ><span>--------- PAYMENT</span>
+      </div>
+      <div id="checkdiv">
+        <img
+          id="check"
+          src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
+          alt=""
+        />
+        <span>100% SECURE</span>
+      </div>
+    </div>
+    <div id="container">
+      <div id="box1">
+        <div id="box1-1">
+          <h5>CONTACT DETAILS</h5>
+          <input type="text" id="name" placeholder="Name*" />
+          <input type="number" id="moile" placeholder="Mobile No*" />
+          <h5>ADDRESS</h5>
+          <input type="text" id="pincode" placeholder="Pin Code*" />
+          <input
+            type="text"
+            id="address"
+            placeholder="Address(House No, Building, Street, Area)*"
+          />
+          <input type="text" id="town" placeholder="Locality / Town*" />
+          <input
+            type="text"
+            id="city"
+            class="input"
+            placeholder="City / District*"
+          />
+          <input type="text" id="state" class="input" placeholder="State*" />
+          <h5>SAVE ADDRESS AS</h5>
+          <div id="box1-1-1">
+            <div id="pink">Home</div>
+            <div>Work</div>
+          </div>
+          <input type="checkbox" id="checkbox" style="color: rgb(255, 0, 85)" />
+          <span>Make this my default address</span>
+        </div>
+
+        <div id="pinkbtn">
+          <button onclick="payment()">ADD ADDRESS</button>
+        </div>
+      </div>
+      <div id="box2">
+        <div id="box1-2-3">
+          <h5 id="totalitems">PRICE DETAILS(0 item)</h5>
+          <table>
+            <tr>
+              <td>Total MRP</td>
+              <td id="totalMRP">₹</td>
+            </tr>
+            <tr>
+              <td>Discount on MRP</td>
+              <td id="discountMRP"><span class="green">-₹</span></td>
+            </tr>
+
+            <tr>
+              <td>Convenienve Fee <span class="pink">Know More</span></td>
+              <td>
+                <div>
+                  <span class="linethrough">₹99</span>
+                  <span class="green">FREE</span>
+                </div>
+              </td>
+            </tr>
+            <tr id="totalamount">
+              <td>Total Amount</td>
+              <td id="totalamount2">₹</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var product = JSON.parse(localStorage.getItem("cart_data"));
+  console.log("product:", product);
+  displayItems(product);
+
+  function displayItems(product) {
+    // box.innerHTML = "";
+    product.forEach(function (item) {
+      let price = document.createElement("p");
+      price.textContent = item.price;
+    });
+  }
+
+  function payment() {
+    window.location.href = "payment.html";
+  }
+
+  var total = product.reduce(function (acc, cv) {
+    return acc + Number(cv.price);
+  }, 0);
+  console.log("total:", total);
+  document.getElementById("totalamount2").innerHTML = `₹${total}`;
+
+  var totalMRP = product.reduce(function (acc, cv) {
+    return acc + Number(cv.off_price);
+  }, 0);
+  console.log("totalMRP:", totalMRP);
+  document.getElementById("totalMRP").innerHTML = `₹${totalMRP}`;
+
+  document.getElementById("discountMRP").innerHTML = `-₹${totalMRP - total}`;
+
+  document.getElementById(
+    "totalitems"
+  ).innerHTML = `PRICE DETAILS(${product.length} item)`;
+</script>
