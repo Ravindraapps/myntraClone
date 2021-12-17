@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Navbar</title>
+    <link rel="stylesheet" href="./style/nav.css">
+    <script src="https://kit.fontawesome.com/cd2d18a745.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div id="header">
+        
+    </div>
+    <div id="ddown">
+        
+    </div>
+    <div id="studioShow">
+
+    </div>
+    <div id="ddownP">
+        
+    </div>
+</body>
+</html>
+
+<script type="module">
+    import men from "./componants/men.js";
+    import women from "./componants/women.js";
+    import kids from "./componants/kids.js";
+    import home from "./componants/home.js";
+    import beauty from "./componants/beauty.js";
+    import profile from "./componants/profile.js";
+    import navbar from "./componants/nav.js";
+    import studio from "./componants/studio.js"
+
+    document.getElementById("header").innerHTML = navbar();
+
+    
+
+    const showMen = ()=> {
+        document.getElementById("ddown").innerHTML = men();
+    }
+    document.getElementById("menCat").addEventListener("mouseover",showMen);
+
+    const removeMen = () => {
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = null;
+        document.getElementById("studioShow").innerHTML = null;
+    }
+    document.getElementById("ddown").addEventListener("mouseleave",removeMen);
+
+    const showWomen = () => {
+        document.getElementById("ddown").innerHTML = women();
+    }
+    document.getElementById("womenCat").addEventListener("mouseover",showWomen);
+
+    const showKids = ()=> {
+        document.getElementById("ddown").innerHTML = kids();
+    }
+    document.getElementById("kidCat").addEventListener("mouseover",showKids);
+
+    const showHome = ()=> {
+        document.getElementById("ddown").innerHTML = home();
+    }
+    document.getElementById("homeCat").addEventListener("mouseover",showHome);
+
+    const showBeauty = ()=> {
+        document.getElementById("ddown").innerHTML = beauty();
+    }
+    document.getElementById("beautyCat").addEventListener("mouseover",showBeauty);
+
+
+    const showProfile = ()=> {
+        document.getElementById("studioShow").innerHTML = null;
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("ddownP").innerHTML = profile();
+    }
+    document.getElementById("profileU").addEventListener("mouseover",showProfile);
+
+    const showStudio = ()=> {
+        document.getElementById("ddownP").innerHTML = null;
+        document.getElementById("ddown").innerHTML = null;
+        document.getElementById("studioShow").innerHTML = studio();
+    }
+    document.getElementById("Studio").addEventListener("mouseover",showStudio);
+
+    const removeStudio = () => {
+        document.getElementById("studioShow").innerHTML = null;
+    }
+    document.getElementById("Studio").addEventListener("mouseleave",removeStudio);
+
+    const removeProf = () => {
+        document.getElementById("ddownP").innerHTML = null;
+    }
+    document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+
+</script>
