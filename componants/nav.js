@@ -24,6 +24,6 @@ function navbar () {
     <i id="cartBag" class="fas fa-shopping-bag fa-2x"></i>
     <p class="bag">Bag</p>
 </div>`;
-  }
+}
   
   export default navbar;
