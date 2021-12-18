@@ -448,13 +448,16 @@
 </html>
 <script>
   var box = document.getElementById("box1-1-4");
-  var product = JSON.parse(localStorage.getItem("cart_data"));
-  console.log("product:", product);
-  displayItems(product);
+  var product = JSON.parse(localStorage.getItem("cart_Data"));
+  var productS = [];
+  productS.push(product)
+  console.log(productS)
+  displayItems(productS);
 
   function displayItems(product) {
     // box.innerHTML = "";
     product.forEach(function (item) {
+      console.log(item);
       let div1 = document.createElement("div");
       div1.setAttribute("class", "div1");
       let div2 = document.createElement("div");
@@ -536,7 +539,7 @@
     window.location.href = "address.html";
   });
 
-  var total = product.reduce(function (acc, cv) {
+  var total = productS.reduce(function (acc, cv) {
     return acc + Number(cv.price);
   }, 0);
   // console.log('total:', total)
@@ -558,7 +561,7 @@
    
     
   }
-  var totalMRP = product.reduce(function (acc, cv) {
+  var totalMRP = productS.reduce(function (acc, cv) {
     return acc + Number(cv.off_price);
   }, 0);
   console.log('totalMRP:', totalMRP)
@@ -568,5 +571,5 @@
 
   document.getElementById(
     "totalitems"
-  ).innerHTML = `PRICE DETAILS(${product.length} item)`;
+  ).innerHTML = `PRICE DETAILS(${productS.length} item)`;
 </script>
