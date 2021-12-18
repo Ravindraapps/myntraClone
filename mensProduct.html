@@ -444,10 +444,7 @@
 
       // localStorage for preview page---------------->
 
-      div.addEventListener("click", function () {
-        localStorage.setItem("preview_Data",JSON.stringify(product));
-        window.location.href = "previewPage.html";
-      });
+     
       div.addEventListener("mouseover", function () {
         div.style.padding = "10px";
         wishlist_div.style.visibility = "visible";
@@ -503,6 +500,10 @@
 
       let image = document.createElement("img");
       image.src = product.images.image1;
+      image.addEventListener("click", function () {
+        localStorage.setItem("preview_Data",JSON.stringify(product));
+        window.location.href = "previewPage.html";
+      });
 
       let rating = document.createElement("p");
       rating.innerHTML = product.rating;
