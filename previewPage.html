@@ -253,6 +253,7 @@ ul{
 <!-- ============================================================================== -->
 
 <script>
+    var cart_Data = JSON.parse(localStorage.getItem("cart_Data")) || [] ;
 
 var preview_Data = JSON.parse(localStorage.getItem("preview_Data"))
 console.log(preview_Data)
@@ -287,6 +288,8 @@ function handleDisplayProducts(data){
     });
 
 }
+
+
 
 
 
@@ -422,7 +425,8 @@ function handleDisplayProducts(data){
     ]
 
     localStorage.setItem("ProductData", JSON.stringify(ProductData));
-    var womenData = JSON.parse(localStorage.getItem("ProductData"));
+    var womenData = JSON.parse(localStorage.getItem("preview_Data"));
+    console.log(womenData)
 
     
     productList(womenData);
@@ -457,7 +461,6 @@ function handleDisplayProducts(data){
 
 
 // CART BUTTON
-var cart_Data ;
 function bagItems(){
     localStorage.setItem("cart_Data",JSON.stringify(preview_Data));
     //  console.log(cart_Data)

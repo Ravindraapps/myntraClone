@@ -444,10 +444,7 @@
 
       // localStorage for preview page---------------->
 
-      div.addEventListener("click", function () {
-        localStorage.setItem("preview_Data",JSON.stringify(product));
-        window.location.href = "previewPage.html";
-      });
+      
       div.addEventListener("mouseover", function () {
         div.style.padding = "10px";
         wishlist_div.style.visibility = "visible";
@@ -498,11 +495,15 @@
         wish_btn.style.backgroundColor = "#32323a";
         wish_btn.style.color = "white";
         wishlist_data.push(product);
-        localStorage.setItem("men_wislist_data",JSON.stringify(wishlist_data));
+        localStorage.setItem("wishlist_data",JSON.stringify(wishlist_data));
       });
 
       let image = document.createElement("img");
       image.src = product.images.image1;
+      image.addEventListener("click", function () {
+        localStorage.setItem("preview_Data",JSON.stringify(product));
+        window.location.href = "previewPage.html";
+      });
 
       let rating = document.createElement("p");
       rating.innerHTML = product.rating;
