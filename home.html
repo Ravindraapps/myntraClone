@@ -442,7 +442,7 @@
     document.getElementById("userProf").addEventListener("click",goToSignup);
 
     let goToCart = ()=>{
-        window.location.href = "cart.html"
+        window.location.href = "bag.html"
     }
     document.getElementById("cartBag").addEventListener("click",goToCart);
 
@@ -471,9 +471,9 @@
         if(e.key === "Enter"){
             var searchCat = document.getElementById("searchInp").value;
             if(searchCat === "men"){
-            window.location.href = "men.html"
+            window.location.href = "mensProduct.html"
             }else if(searchCat === "women"){
-                window.location.href = "women.html"
+                window.location.href = "womensProduct.html"
             }else{
                 alert("Please enter valid category")
             };

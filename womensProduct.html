@@ -444,11 +444,7 @@
 
       // localStorage for preview page---------------->
 
-<<<<<<< HEAD
-     
-=======
-      
->>>>>>> 7d77098b3b5f2569b1d45ebf200d6e10df250b3e
+
       div.addEventListener("mouseover", function () {
         div.style.padding = "10px";
         wishlist_div.style.visibility = "visible";
@@ -734,4 +730,58 @@
     });
 
   displayProduct(data);
+  let goToSignup = ()=>{
+        window.location.href = "verify.html";
+    }
+    document.getElementById("userProf").addEventListener("click",goToSignup);
+
+    let goToCart = ()=>{
+        window.location.href = "bag.html"
+    }
+    document.getElementById("cartBag").addEventListener("click",goToCart);
+
+    let goToWishlist = ()=>{
+        window.location.href = "wishlist.html"
+    }
+
+    document.getElementById("wishList").addEventListener("click",goToWishlist);
+
+    
+    let goToMenCategory = ()=>{
+        window.location.href = "mensProduct.html"
+    }
+
+    document.getElementById("menCat").addEventListener("click",goToMenCategory);
+
+    let goToWomenCategory = () =>{
+        window.location.href = "womensProduct.html"
+    }
+
+    document.getElementById("womenCat").addEventListener("click",goToWomenCategory);
+
+    let goToHome = () =>{
+        window.location.href = "home.html"
+    }
+
+    document.getElementById("logo").addEventListener("click",goToHome);
+
+
+    
+
+    let getResult = (e) => {
+        if(e.key === "Enter"){
+            var searchCat = document.getElementById("searchInp").value;
+            if(searchCat === "men"){
+            window.location.href = "mensProduct.html"
+            }else if(searchCat === "women"){
+                window.location.href = "womensProduct.html"
+            }else{
+                alert("Please enter valid category")
+            };
+        };
+    }
+
+
+    document.getElementById("searchInp").addEventListener("keypress",getResult);
+
 </script>

@@ -142,13 +142,13 @@ ul{
     <span id="do">7099</span>
    (40% OFF)</h3>
 
-<h5 style=color:#1eb0a0;margin-top:;>inclusive of all taxes</h5>
+<h5 style=color:#1eb0a0;>inclusive of all taxes</h5>
 <h5>SELECT  SIZE</h5>
 <p style="font-weight:600;font-size:20px;"> <span style="border:1px solid;padding:1% 3%" class="ml-3">M</span> <span style="border:1px solid;padding:1% 4%" class="ml-2">L</span> <span style="border:1px solid;padding:1% 3%" class="ml-2">XL</span> <br class="break"><a href="#/" style="color:black" class="ml-3 open-pop-container"></a>
 
 <div id="button">
     <button id="btn1" onclick="bagItems()">ADD TO BAG</button>
-    <button id="btn2">WISHLIST</button>
+    <button id="btn2" onclick="addTowish()">WISHLIST</button>
 </div>
 <h3>DELIVERY OPTIONS</h3>
 
@@ -248,6 +248,55 @@ ul{
         document.getElementById("ddownP").innerHTML = null;
     }
     document.getElementById("ddownP").addEventListener("mouseleave",removeProf);
+    let goToCart = ()=>{
+        window.location.href = "bag.html"
+    }
+    document.getElementById("cartBag").addEventListener("click",goToCart);
+
+    let goToWishlist = ()=>{
+        window.location.href = "wishlist.html"
+    }
+
+    document.getElementById("wishList").addEventListener("click",goToWishlist);
+
+    
+    let goToMenCategory = ()=>{
+        window.location.href = "mensProduct.html"
+    }
+
+    document.getElementById("menCat").addEventListener("click",goToMenCategory);
+
+    let goToWomenCategory = () =>{
+        window.location.href = "womensProduct.html"
+    }
+
+    document.getElementById("womenCat").addEventListener("click",goToWomenCategory);
+
+    let goToHome = () =>{
+        window.location.href = "home.html"
+    }
+
+    document.getElementById("logo").addEventListener("click",goToHome);
+
+
+
+    let getResult = (e) => {
+        if(e.key === "Enter"){
+            var searchCat = document.getElementById("searchInp").value;
+            if(searchCat === "men"){
+            window.location.href = "mensProduct.html"
+            }else if(searchCat === "women"){
+                window.location.href = "womensProduct.html"
+            }else{
+                alert("Please enter valid category")
+            };
+        };
+    }
+
+
+
+    document.getElementById("searchInp").addEventListener("keypress",getResult);
+
 
 </script>
 <!-- ============================================================================== -->
@@ -258,6 +307,16 @@ ul{
 var preview_Data = JSON.parse(localStorage.getItem("preview_Data"))
 console.log(preview_Data)
 handleDisplayProducts(preview_Data) ;
+
+ function addTowish() {
+        icon.innerHTML = `<i class="fas fa-heart"></i>`;
+        icon.style.color = "#ff425c";
+        wish_btn.style.backgroundColor = "#32323a";
+        wish_btn.style.color = "white";
+        wishlist_data.push(product);
+        localStorage.setItem("wishlist_data",JSON.stringify(wishlist_data));
+      }
+
 
 function handleDisplayProducts(data){
     document.getElementById("clicked_data").innerHTML = "" ;
@@ -288,31 +347,6 @@ function handleDisplayProducts(data){
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ----------------------------------------
 
@@ -424,8 +458,14 @@ function handleDisplayProducts(data){
         },
     ]
 
+    let cartData = JSON.parse(localStorage.getItem("cart_Data")) ||[];
+
+
     localStorage.setItem("ProductData", JSON.stringify(ProductData));
-    var womenData = JSON.parse(localStorage.getItem("preview_Data"));
+    var womenD = JSON.parse(localStorage.getItem("preview_Data"));
+    womenData=[];
+    womenData.push(womenD)
+
     console.log(womenData)
 
     
@@ -459,12 +499,16 @@ function handleDisplayProducts(data){
      })
     }
 
-
 // CART BUTTON
 function bagItems(){
-    localStorage.setItem("cart_Data",JSON.stringify(preview_Data));
+    console.log(("here"))
+    cartData.push(preview_Data);
+    localStorage.setItem("cart_Data",JSON.stringify(cartData));
+    window.location.href="bag.html"
     //  console.log(cart_Data)
 }
 
+
+  
 
 </script>
