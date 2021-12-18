@@ -12,7 +12,7 @@ function navbar () {
     <i id="searchIcon" class="fas fa-search"></i>
     <input id="searchInp" type="text" placeholder="Search for products,brands and more">
 </div>
-<div >
+<div id="userProf">
     <i id="profile" class="far fa-user fa-2x"></i>
     <p id="profileU" class="prof">Profile</p>
 </div>
