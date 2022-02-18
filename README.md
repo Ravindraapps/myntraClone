@@ -31,7 +31,7 @@ This is the clone of Myntra.com. We started this project as a four member team d
   <ul>
     <li>Landing Page</li>
     <li>Sign in /sign up</li>
-    <li>Diffent Product Sections</li>
+    <li>Different Product Sections</li>
     <li>Cart Section</li>
     <li>Address Page</li>
     <li>Payment Page</li>
