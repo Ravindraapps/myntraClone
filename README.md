@@ -1,5 +1,5 @@
 # myntraClone
-This is the clone of Myntra.com. We started this project as a four member team during construct week organised at Masai School, Bengaluru, Karnataka. You can find the project demo <a href="https://selva658.github.io/Lybrate_Clone_Project/">here.</a>
+This is the clone of Myntra.com. We started this project as a four member team during construct week organised at Masai School, Bengaluru, Karnataka. You can find the project demo <a href="https://cranky-knuth-b30b90.netlify.app/">here.</a>
 <h1>Table of contents</h1>
 <hr>
 <ul>
@@ -62,12 +62,12 @@ This is the clone of Myntra.com. We started this project as a four member team d
   <hr>
   <div>
   <div>
-  <img style="width:70%" src=""/>
-    <img style="width:70%" src=""/>
-    <img style="width:70%" src=""/>
-    <img style="width:70%" src=""/>
-     <img style="width:70%" src=""/>
-     <img style="width:70%" src=""/>
-    <img style="width:70%" src=""/>
+  <img style="width:70%" src="https://miro.medium.com/max/1254/0*Reo6RC8oTKhEl0Ll.png"/>
+    <img style="width:70%" src="https://miro.medium.com/max/1254/0*FHVGfhW6swBxJmYt.png"/>
+    <img style="width:70%" src="https://miro.medium.com/max/3840/1*_aGzofiLF_c-21beR2Mo_w.png"/>
+    <img style="width:70%" src="https://miro.medium.com/max/3840/1*oAA8QOPLhrZOgLBNjdFbhw.png"/>
+     <img style="width:70%" src="https://miro.medium.com/max/1400/1*Cs62FfRvghrdggh-ELTb_A.png"/>
+     <img style="width:70%" src="https://miro.medium.com/max/3840/1*W3bYuJflRaPdyeJ4j7mZVQ.png"/>
+    <img style="width:70%" src="https://miro.medium.com/max/1254/0*bsh4EmleswJhbJSr.png"/>
   </div>  
 </div>
